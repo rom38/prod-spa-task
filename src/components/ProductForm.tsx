@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Product } from '../types/product';
 import { useRouter } from 'next/router';
 
@@ -7,7 +7,7 @@ interface ProductFormProps {
   onSubmit: (product: Omit<Product, 'id' | 'liked'>) => void;
 }
 
-const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) => {
+function ProductForm({ initialProduct, onSubmit }: ProductFormProps) {
   const router = useRouter();
   const [formData, setFormData] = useState<Omit<Product, 'id' | 'liked'>>(
     initialProduct || {
@@ -18,7 +18,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
       image: '',
     }
   );
-  
+
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -31,13 +31,13 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!formData.title.trim()) newErrors.title = 'Title is required';
     if (formData.price <= 0) newErrors.price = 'Price must be greater than 0';
     if (!formData.description.trim()) newErrors.description = 'Description is required';
     if (!formData.category.trim()) newErrors.category = 'Category is required';
     if (!formData.image.trim()) newErrors.image = 'Image URL is required';
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -54,7 +54,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
       <div className="mb-4">
         <label className="block text-gray-700 mb-2" htmlFor="title">
-          Title
+          Заголовок
         </label>
         <input
           type="text"
@@ -66,10 +66,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
         />
         {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
       </div>
-      
+
       <div className="mb-4">
         <label className="block text-gray-700 mb-2" htmlFor="price">
-          Price
+          Цена
         </label>
         <input
           type="number"
@@ -81,10 +81,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
         />
         {errors.price && <p className="text-red-500 text-sm mt-1">{errors.price}</p>}
       </div>
-      
+
       <div className="mb-4">
         <label className="block text-gray-700 mb-2" htmlFor="description">
-          Description
+          Описание
         </label>
         <textarea
           id="description"
@@ -96,10 +96,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
         />
         {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description}</p>}
       </div>
-      
+
       <div className="mb-4">
         <label className="block text-gray-700 mb-2" htmlFor="category">
-          Category
+          Категория
         </label>
         <input
           type="text"
@@ -111,10 +111,10 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
         />
         {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category}</p>}
       </div>
-      
+
       <div className="mb-4">
         <label className="block text-gray-700 mb-2" htmlFor="image">
-          Image URL
+          URL изображения
         </label>
         <input
           type="text"
@@ -126,20 +126,20 @@ const ProductForm: React.FC<ProductFormProps> = ({ initialProduct, onSubmit }) =
         />
         {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
       </div>
-      
+
       <div className="flex justify-end space-x-4">
         <button
           type="button"
           onClick={() => router.push('/products')}
-          className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"
+          className="px-4 py-2 bg-red-400 rounded-md hover:bg-gray-400"
         >
-          Cancel
+          Отмена
         </button>
         <button
           type="submit"
           className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
         >
-          {initialProduct ? 'Update Product' : 'Create Product'}
+          {initialProduct ? 'Изменить продукт' : 'Добавить продукт'}
         </button>
       </div>
     </form>

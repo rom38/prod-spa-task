@@ -18,19 +18,19 @@ function FilterControls ({
           onClick={() => onFilterChange('all')}
           className={`px-4 py-2 rounded-md ${filter === 'all' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
         >
-          All Products
+          Все продукты
         </button>
         <button
           onClick={() => onFilterChange('liked')}
           className={`px-4 py-2 rounded-md ${filter === 'liked' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}
         >
-          Liked
+          Отмеченные
         </button>
       </div>
       
       <input
         type="text"
-        placeholder="Search products..."
+        placeholder="Поиск продуктов..."
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
         className="px-4 py-2 border rounded-md w-full sm:w-64"

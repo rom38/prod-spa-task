@@ -15,10 +15,10 @@ const ProductPage: React.FC = () => {
     return (
       // <Layout>
         <div className="container mx-auto px-4 py-8 text-center">
-          <p>Product not found</p>
+          <p>Продукт не найден</p>
           <Link href="/products">
             <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-              Back to Products
+            Назад к списку продуктов
             </button>
           </Link>
         </div>
@@ -31,7 +31,7 @@ const ProductPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <Link href="/products">
           <button className="mb-6 px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400">
-            Back to Products
+            Назад к списку продуктов
           </button>
         </Link>
         
@@ -57,7 +57,7 @@ const ProductPage: React.FC = () => {
             <div className="flex space-x-4">
               <Link href={`/products/${product.id}/edit`}>
                 <button className="px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600">
-                  Edit Product
+                  Изменить продукт
                 </button>
               </Link>
             </div>
