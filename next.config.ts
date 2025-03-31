@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next'
  
 const nextConfig: NextConfig = {
+  output: 'export',
+  basePath: '/prod-spa-task',
   async redirects() {
     return [
       // Basic redirect

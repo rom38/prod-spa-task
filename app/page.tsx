@@ -2,11 +2,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export const Home= () => {
-  const { push } = useRouter();
-
+function Page() {
+  const router = useRouter();
+  // router.push('/products/');
   useEffect(() => {
-     push('/products');
+    router.push('/products/');
   }, []);
-  return <p></p>;
+  return (<p></p>);
 };
+export default Page
