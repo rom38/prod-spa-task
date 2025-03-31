@@ -5,6 +5,15 @@ import { useStore } from '../../../src/store/useStore';
 // import Layout from '../../components/Layout';
 import Link from 'next/link';
 
+export async function generateStaticParams() {
+  // const posts = await fetch('https://.../posts').then((res) => res.json())
+  const response = await fetch('https://fakestoreapi.com/products');
+  const data = await response.json();
+  return data.map((product) => ({
+    id: product.id,
+  }))
+}
+
 function  ProductPage() {
   // const router = useRouter();
   // const { id } = router.query;
