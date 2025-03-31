@@ -4,7 +4,7 @@ import { useStore } from '../../store/useStore';
 // import Layout from '../../components/Layout';
 import Link from 'next/link';
 
-const ProductPage: React.FC = () => {
+function  ProductPage() {
   const router = useRouter();
   const { id } = router.query;
   const { products, updateProduct } = useStore();
@@ -13,7 +13,6 @@ const ProductPage: React.FC = () => {
   
   if (!product) {
     return (
-      // <Layout>
         <div className="container mx-auto px-4 py-8 text-center">
           <p>Продукт не найден</p>
           <Link href="/products">
@@ -22,12 +21,10 @@ const ProductPage: React.FC = () => {
             </button>
           </Link>
         </div>
-      // </Layout>
     );
   }
   
   return (
-    // <Layout>
       <div className="container mx-auto px-4 py-8">
         <Link href="/products">
           <button className="mb-6 px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400">
@@ -64,7 +61,6 @@ const ProductPage: React.FC = () => {
           </div>
         </div>
       </div>
-    // </Layout>
   );
 };
 
