@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Product } from '../types/product';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 interface ProductFormProps {
   initialProduct?: Product;
