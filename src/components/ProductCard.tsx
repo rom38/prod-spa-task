@@ -16,8 +16,8 @@ function ProductCard ({ product, onLike, onDelete } :ProductCardProps)  {
       : product.description;
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-      <Link href={`/products/${product.id}`} passHref>
+    <div className="flex flex-col justify-between border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+      <Link className="grow" href={`/products/${product.id}`} passHref>
         <div className="cursor-pointer">
           <div className="h-48 bg-gray-100 flex items-center justify-center">
             <img 
@@ -35,7 +35,7 @@ function ProductCard ({ product, onLike, onDelete } :ProductCardProps)  {
         </div>
       </Link>
       
-      <div className="p-4 border-t flex justify-between content-end">
+      <div className="grow-0 p-4 border-t flex justify-between content-end">
         <button 
           onClick={(e) => {
             e.stopPropagation();
